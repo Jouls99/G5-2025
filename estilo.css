@@ -1,0 +1,181 @@
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #919090, #000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200vh;
+    color: #000000;
+  }
+
+  .container {
+    display: none;
+    background: #ffffff;
+    padding: 200px;
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(176, 175, 175, 0.635);
+    width: 500%;
+    max-width: 500px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1, h2 {
+    text-align: center;
+    color: #000000;
+  }
+
+  h3 {
+    text-align: center;
+    color: #000000;
+  }
+
+  h4 { color: #010101; }
+
+  img {
+    display: block;
+    margin: 0 auto 50px;
+    width: 400px;
+    border-radius: 0px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    transition: all 0.3s;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #000000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    outline: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    background: #02c51f;
+    transform: scale(1.02);
+  }
+
+  .question p {
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+
+  .btn-group button {
+    flex: 2;
+    margin: 0 5px;
+    padding: 10px 6px; /* 👈 Reduce el padding vertical y horizontal */
+    border-radius: 10px; /* 👈 Opcional: reduce un poco el redondeo */
+    border: 2px solid #000000;
+    background-color: #0276fa;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px; /* 👈 Reduce el tamaño de la fuente */
+    transition: all 0.2s;
+}
+
+  .btn-group button.selected {
+    background-color: #00cc44;
+    color: #fff;
+  }
+
+  .btn-group button:hover {
+    background-color: #00b33c;
+    color: white;
+  }
+
+  #home {
+    background: linear-gradient(135deg, #024296, #80b8f3);
+    border-radius: 10px;
+    padding: 60px 30px;
+    color: rgb(254, 254, 254);
+    text-align: center;
+  }
+
+  #home h2 {
+    color: #000000;
+    font-size: 40px;
+  }
+
+  .reclamo-card {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+    box-shadow: 0 3px 10px rgb(74, 74, 75);
+  }
+
+  .reclamo-card strong { color: #157bf0; }
+
+  #buscador {
+    display: center;
+    gap: 2px;
+    margin-bottom: 2px;
+    
+  }
+
+  #buscador input {
+    flex: 1;
+  }
+
+  #buscador button {
+    
+    padding: 8px 2px;
+    
+  }
+
+  .delete-btn {
+    background-color: #276ed2;
+    border: none;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .delete-btn:hover {
+    background-color: #ff0000;
+    transform: scale(1.02);
+  }
+
+  .status {
+    text-align: center;
+    font-weight: bold;
+    color: #157bf0;
+  }
+

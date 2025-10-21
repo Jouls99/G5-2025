@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FioNet - Reclamos</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+<!-- TODO TU HTML EXACTAMENTE IGUAL -->
+<!-- Pantalla Inicio -->
+<div id="home" class="container active">
+  <img src="Fionet.jpg" alt="FioNet">
+  <h2>Bienvenido</h2>
+  <h2>¿Ingresar como?</h2>
+  <button onclick="showPage('clienteMenu')">Cliente</button>
+  <button onclick="showPage('adminLogin')">Administrador</button>
+
+  <!-- Ofertas -->
+  <div id="ofertasInicio" style="margin-top: 30px; padding: 15px; background: #000000; border-radius: 10px;">
+    <h3>🔥 informacion y ofertas exclusivas para vos</h3>
+    <div id="ofertasSlider"></div>
+  </div>
+</div>
+
+<!-- Menú Cliente -->
+<div id="clienteMenu" class="container">
+  <h1>Cliente</h1>
+  <button onclick="showPage('reclamoForm')">Realizar Reclamo</button>
+  <button onclick="showPage('estadoReclamo')">Consultar Estado</button>
+  <button onclick="showPage('home')">Volver</button>
+</div>
+
+<!-- Formulario Reclamo -->
+<div id="reclamoForm" class="container">
+  <h1>Realizar Reclamo</h1>
+  <input type="text" id="nombre" placeholder="Nombre">
+  <input type="text" id="apellido" placeholder="Apellido">
+  <input type="number" id="dni" placeholder="DNI">
+  <select id="localidad">
+    <option value="">Seleccione su localidad</option>
+    <option>San Lorenzo</option>
+    <option>Empedrado</option>
+    <option>El Sombrero</option>
+    <option>Riachuelo</option>
+    <option>La Leonesa</option>
+  </select>
+  <textarea id="descripcion" placeholder="Descripción del problema"></textarea>
+
+  <h2>Preguntas técnicas</h2>
+  <div class="question"><p>¿Reinició el router?</p><div class="btn-group"><button onclick="selectAnswer(this,'router')">Sí</button><button onclick="selectAnswer(this,'router')">No</button></div></div>
+  <div class="question"><p>¿Revisó el cable?</p><div class="btn-group"><button onclick="selectAnswer(this,'cables')">Sí</button><button onclick="selectAnswer(this,'cables')">No</button></div></div>
+  <div class="question"><p>¿Probó otro dispositivo?</p><div class="btn-group"><button onclick="selectAnswer(this,'dispositivo')">Sí</button><button onclick="selectAnswer(this,'dispositivo')">No</button></div></div>
+  <div class="question"><p>¿Visualiza su red WiFi?</p><div class="btn-group"><button onclick="selectAnswer(this,'wifi')">Sí</button><button onclick="selectAnswer(this,'wifi')">No</button></div></div>
+  <div class="question"><p>¿Hay una luz roja encendida?</p><div class="btn-group"><button onclick="selectAnswer(this,'los')">Sí</button><button onclick="selectAnswer(this,'los')">No</button></div></div>
+  <div class="question"><p>¿Compartió su contraseña?</p><div class="btn-group"><button onclick="selectAnswer(this,'contrasena')">Sí</button><button onclick="selectAnswer(this,'contrasena')">No</button></div></div>
+  <div class="question"><p>¿Le aparece algún mensaje de error?</p><div class="btn-group"><button onclick="selectAnswer(this,'error')">Sí</button><button onclick="selectAnswer(this,'error')">No</button></div></div>
+
+  <button onclick="registrarReclamo()">Enviar Reclamo</button>
+  <button onclick="showPage('clienteMenu')">Volver</button>
+</div>
+
+<!-- Consultar Estado -->
+<div id="estadoReclamo" class="container">
+  <h1>Consultar Estado</h1>
+  <input type="text" id="consultaInput" placeholder="N° de Reclamo o DNI">
+  <button onclick="consultarEstado()">Consultar</button>
+  <div id="resultadoEstado" class="status"></div>
+  <button onclick="showPage('clienteMenu')">Volver</button>
+</div>
+
+<!-- Login Administrador -->
+<div id="adminLogin" class="container">
+  <h1>Administrador</h1>
+  <input type="text" placeholder="Usuario">
+  <input type="password" placeholder="Contraseña">
+  <button onclick="showPage('adminMenu')">Ingresar</button>
+  <button onclick="showPage('home')">Volver</button>
+</div>
+
+<!-- Menú Administrador -->
+<div id="adminMenu" class="container">
+  <h1>Panel Administrador</h1>
+  <button onclick="showPage('reclamoForm')">Registrar Reclamo</button>
+  <button onclick="showPage('listaReclamos'); mostrarReclamos()">Ver Reclamos</button>
+  <button onclick="showPage('gestionarOfertas')">Gestionar Ofertas</button>
+  <button onclick="showPage('home')">Cerrar Sesión</button>
+</div>
+
+<!-- Lista Reclamos -->
+<div id="listaReclamos" class="container">
+  <h1>Lista de Reclamos</h1>
+  <div id="buscador">
+  <input type="text" id="busqueda" placeholder="Nº Reclamo o DNI">
+  <div class="btn-group">
+    <button onclick="buscarReclamo()">Buscar</button>
+    <button onclick="mostrarTodos()">Mostrar Todos</button>
+  </div>
+  </div>
+ 
+  <div id="reclamosContainer"></div>
+  <button onclick="window.location.href='exportar_reclamos.php'">Exportar a Excel (CSV)</button>
+  <button onclick="showPage('adminMenu')">Volver</button>
+</div>
+
+<!-- Gestionar Ofertas -->
+<div id="gestionarOfertas" class="container">
+  <h1>Gestionar Ofertas</h1>
+  <h4><input type="text" id="ofertaTitulo" placeholder="Título de la oferta"></h4>
+  <textarea id="ofertaDescripcion" placeholder="Descripción de la oferta"></textarea>
+  <input type="file" id="ofertaImagen" accept="image/*">
+  <label><input type="checkbox" id="ofertaActiva"> Activa</label>
+  <button onclick="agregarOferta()">Agregar Oferta</button>
+  <button onclick="mostrarOfertas()">Ver Ofertas</button>
+  <button onclick="showPage('adminMenu')">Volver</button>
+
+  <div id="ofertasContainer" style="margin-top: 20px;"></div>
+</div>
+
+<!-- Enlace al JavaScript externo -->
+<script src="script.js"></script>
+
+</body>
+</html>
